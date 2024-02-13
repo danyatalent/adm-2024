@@ -185,27 +185,45 @@ def button_click(char, text_input):
 
 calc_operator = ''
 
+
+def clear_display(text_input):
+    global calc_operator
+    calc_operator = ''
+    text_input.set("")
+
+def calculate(text_input):
+    try:
+        result = eval(calc_operator)
+        text_input.set(str(result))
+    except Exception as e:
+        text_input.set("Error")
+
 def main():
     tk_calc = Tk()
     tk_calc.configure(bg="#293C4A", bd=10)
     text_input = StringVar()
-    rhs_input = StringVar()
-    # operator_input = StringVar()
-    # notation_input = StringVar()
     tk_calc.title("Calculator")
+
     lhs_display = Entry(tk_calc, font=('sans-serif', 20, 'bold'), textvariable=text_input,
-                     bd=2, insertwidth = 3, bg='#BBB', justify='right',width=10).grid(columnspan=5, padx = 0, pady = 5)
-    # notation_display = Entry(tk_calc, font=('sans-serif', 20, 'bold'), textvariable=notation_input,
-    #                  bd=5, insertwidth = 5, bg='#BBB', justify='right',width=2).grid(row=0, column=5)
+                     bd=2, insertwidth=3, bg='#BBB', justify='right', width=10)
+    lhs_display.grid(columnspan=5, padx=0, pady=5)
+
     button_params = {'bd':5, 'fg':'#BBB', 'bg':'#3C3636', 'font':('sans-serif', 20, 'bold')}
-    button_params_main = {'bd':5, 'fg':'#000', 'bg':'#BBB', 'font':('sans-serif', 20, 'bold')}
-    button_1 = Button(tk_calc, button_params, text='1',
-                   command=lambda:button_click('1',text_input)).grid(row=1, column=0, sticky="nesw")
-    
-    combobox = ttk.Combobox(tk_calc,font=('sans-serif', 10, 'bold'), foreground='#000', state='readonly', width=2,values=list(x for x in range(2,17))).grid(column=5, row=0, sticky='se')
-    operator = ttk.Combobox(tk_calc, font=('sans-serif', 20, 'bold'), background="#BBB", foreground="#000", state="readonly", width=1, values=['-','+','*','/']).grid(column=6, row=0, padx=20, pady=5)
-    rhs_display = Entry(tk_calc, font=('sans-serif', 20, 'bold'), textvariable=rhs_input,
-                     bd=2, insertwidth = 5, bg='#BBB', justify='right',width=10).grid(row=0,column=7,columnspan=2, padx = 10, pady = 5)
+
+    # Numeric Buttons
+    for i in range(1, 10):
+        Button(tk_calc, button_params, text=str(i), command=lambda i=i: button_click(i, text_input)).grid(row=(i-1)//3+1, column=(i-1)%3, sticky="nesw")
+    Button(tk_calc, button_params, text='0', command=lambda: button_click('0', text_input)).grid(row=4, column=1, sticky="nesw")
+
+    # Arithmetic operation buttons
+    Button(tk_calc, button_params, text='+', command=lambda: button_click('+', text_input)).grid(row=1, column=3, sticky="nesw")
+    Button(tk_calc, button_params, text='-', command=lambda: button_click('-', text_input)).grid(row=2, column=3, sticky="nesw")
+    Button(tk_calc, button_params, text='*', command=lambda: button_click('*', text_input)).grid(row=3, column=3, sticky="nesw")
+    Button(tk_calc, button_params, text='/', command=lambda: button_click('/', text_input)).grid(row=4, column=3, sticky="nesw")
+
+    # Other buttons
+    Button(tk_calc, button_params, text='C', command=lambda: clear_display(text_input)).grid(row=1, column=4, sticky="nesw")
+    Button(tk_calc, button_params, text='=', command=lambda: calculate(text_input)).grid(row=2, column=4, rowspan=3, sticky="nesw")
 
     tk_calc.mainloop()
 
