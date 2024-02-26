@@ -19,7 +19,7 @@ def main():
     choice = int(input("Введите номер схемы: "))
 
     if choice >= 1 and choice <= len(schemes):
-        schemes[choice - 1].execute()
+        schemes[choice - 1].execute(test_mode=0)
     else:
         raise Exception("Вы вышли за границы, попробуйте еще раз")
 
