@@ -49,8 +49,10 @@ class SumRule(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение правила суммы."""
         print("Вы выбрали правило суммы.")
-        n = int(input("Мощность множества (n): "))
-        k = int(input("Количество (k): "))
+        if not test_mode:
+            n = int(input("Мощность множества (n): "))
+            k = int(input("Количество (k): "))
+        return n * k
         print("Результат:", n * k)
 
 
@@ -59,9 +61,11 @@ class ProductRule(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение правила произведения."""
         print("Вы выбрали правило произведения.")
-        n = int(input("Мощность множества (n): "))
-        k = int(input("Количетсво (k): "))
+        if not test_mode:
+            n = int(input("Мощность множества (n): "))
+            k = int(input("Количетсво (k): "))
         result = n ** k
+        return result
         print("Результат:", result)
 
 
@@ -70,9 +74,12 @@ class PermWithRep(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение перестановок с повторениями."""
         print("Вы выбрали перестановки с повторениями.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину перестановки (k): "))
+        if not test_mode:
+
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину перестановки (k): "))
         result = n ** k
+        return result
         print("Результат:", result)
 
 
@@ -81,9 +88,11 @@ class PermWithoutRep(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение перестановок без повторений."""
         print("Вы выбрали перестановки без повторений.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину перестановки (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину перестановки (k): "))
         result = self.factorial(n) // self.factorial(n - k)
+        return result
         print("Результат:", self.factorial(n) // self.factorial(n - k))
 
 class CombWithRep(CombinatorialScheme):
@@ -91,9 +100,11 @@ class CombWithRep(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение сочетаний с повторениями."""
         print("Вы выбрали сочетания с повторениями.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину сочетания (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину сочетания (k): "))
         result = self.combinations(n + k - 1, k)
+        return result
         print("Результат:", result)
 
 class CombWithoutRep(CombinatorialScheme):
@@ -102,9 +113,11 @@ class CombWithoutRep(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение сочетаний без повторений."""
         print("Вы выбрали сочетания без повторений.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину сочетания (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину сочетания (k): "))
         result = self.combinations(n,k)
+        return result
         print("Результат:", result)
 
 
@@ -128,9 +141,11 @@ class ArrangeWithoutRep(CombinatorialScheme):
     def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение размещений без повторений."""
         print("Вы выбрали размещения без повторений.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину расстоновки (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину расстоновки (k): "))
         result = self.factorial(n) // self.factorial(n - k)
+        return result
         print("Результат:", result)
 
 
