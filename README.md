@@ -13,8 +13,8 @@
 
 - Клонируйте репозиторий, используя команду ниже
 ```bash
- it clone https://github.com/danyatalent/adm-2024.git
- ```
+ git clone https://github.com/danyatalent/adm-2024.git
+```
 - Перейдите в директорию adm-2024
 ```bash
 cd adm-2024
