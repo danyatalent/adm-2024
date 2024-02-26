@@ -49,8 +49,8 @@ class SumRule(CombinatorialScheme):
     def execute(self):
         """Выполнение правила суммы."""
         print("Вы выбрали правило суммы.")
-        n = int(input("Мощность множества (n)"))
-        k = int(input("Количество (k)"))
+        n = int(input("Мощность множества (n): "))
+        k = int(input("Количество (k): "))
         print("Результат:", n * k)
 
 
@@ -59,8 +59,8 @@ class ProductRule(CombinatorialScheme):
     def execute(self):
         """Выполнение правила произведения."""
         print("Вы выбрали правило произведения.")
-        n = int(input("Мощность множества (n)"))
-        k = int(input("Количетсво (k)"))
+        n = int(input("Мощность множества (n): "))
+        k = int(input("Количетсво (k): "))
         result = n ** k
         print("Результат:", result)
 
