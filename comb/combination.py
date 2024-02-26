@@ -37,7 +37,7 @@ class CombinatorialScheme:
         """
         return self.factorial(n) // (self.factorial(k) * self.factorial(n - k))
 
-    def execute(self):
+    def execute(self, n, k, test_mode):
         """
         Выполнение комбинаторной схемы. Должен быть реализован в подклассах.
         """
@@ -46,118 +46,110 @@ class CombinatorialScheme:
 
 class SumRule(CombinatorialScheme):
     """Реализация правила суммы."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение правила суммы."""
         print("Вы выбрали правило суммы.")
-        n = int(input("Мощность множества (n)"))
-        k = int(input("Количество (k)"))
+        if not test_mode:
+            n = int(input("Мощность множества (n): "))
+            k = int(input("Количество (k): "))
+        result = n * k
         print("Результат:", n * k)
+        return result
 
 
 class ProductRule(CombinatorialScheme):
     """Реализация правила произведения."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение правила произведения."""
         print("Вы выбрали правило произведения.")
-        n = int(input("Мощность множества (n)"))
-        k = int(input("Количетсво (k)"))
+        if not test_mode:
+            n = int(input("Мощность множества (n): "))
+            k = int(input("Количетсво (k): "))
         result = n ** k
         print("Результат:", result)
+        return result
 
 
 class PermWithRep(CombinatorialScheme):
     """Реализация перестановок с повторениями."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение перестановок с повторениями."""
         print("Вы выбрали перестановки с повторениями.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину перестановки (k): "))
+        if not test_mode:
+
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину перестановки (k): "))
         result = n ** k
         print("Результат:", result)
+        return result
 
 
 class PermWithoutRep(CombinatorialScheme):
     """Реализация перестановок без повторений."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение перестановок без повторений."""
         print("Вы выбрали перестановки без повторений.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину перестановки (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину перестановки (k): "))
         result = self.factorial(n) // self.factorial(n - k)
         print("Результат:", self.factorial(n) // self.factorial(n - k))
+        return result
 
 class CombWithRep(CombinatorialScheme):
     """Реализация сочетаний с повторениями."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение сочетаний с повторениями."""
         print("Вы выбрали сочетания с повторениями.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину сочетания (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину сочетания (k): "))
         result = self.combinations(n + k - 1, k)
         print("Результат:", result)
+        return result
 
 class CombWithoutRep(CombinatorialScheme):
     """Реализация сочетаний без повторений."""
 
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение сочетаний без повторений."""
         print("Вы выбрали сочетания без повторений.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину сочетания (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину сочетания (k): "))
         result = self.combinations(n,k)
         print("Результат:", result)
+        return result
 
 
 
 class ArrangeWithRep(CombinatorialScheme):
     """Реализация размещений с повторениями."""
 
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение размещений с повторениями."""
         print("Вы выбрали размещения с повторениями.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину размещения (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину размещения (k): "))
         print("Результат:", n ** k)
+        return n ** k
 
 
 class ArrangeWithoutRep(CombinatorialScheme):
     """Реализация размещений без повторений."""
 
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение размещений без повторений."""
         print("Вы выбрали размещения без повторений.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину расстоновки (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину расстоновки (k): "))
         result = self.factorial(n) // self.factorial(n - k)
         print("Результат:", result)
+        return result
 
 
 
 
-def main():
-    """Главная функция для выполнения программы."""
-    schemes = [
-        SumRule("Правило суммы"),
-        ProductRule("Правило произведения"),
-        PermWithRep("Перестановки с повторениями"),
-        PermWithoutRep("Перестановки без повторений"),
-        CombWithRep("Сочетания с повторениями"),
-        CombWithoutRep("Сочетания без повторений"),
-        ArrangeWithRep("Размещения с повторениями"),
-        ArrangeWithoutRep("Размещения без повторений")
-    ]
 
-    print("Выберите комбинаторную схему:")
-    for i, scheme in enumerate(schemes, start=1):
-        print(f"{i}. {scheme.name}")
-
-    choice = int(input("Введите номер схемы: "))
-
-    if choice >= 1 and choice <= len(schemes):
-        schemes[choice - 1].execute()
-    else:
-        raise Exception("Вы вышли за границы, попробуйте еще раз")
-
-
-if __name__ == "__main__":
-    main()
