@@ -37,7 +37,7 @@ class CombinatorialScheme:
         """
         return self.factorial(n) // (self.factorial(k) * self.factorial(n - k))
 
-    def execute(self):
+    def execute(self, n, k, test_mode):
         """
         Выполнение комбинаторной схемы. Должен быть реализован в подклассах.
         """
@@ -46,7 +46,7 @@ class CombinatorialScheme:
 
 class SumRule(CombinatorialScheme):
     """Реализация правила суммы."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение правила суммы."""
         print("Вы выбрали правило суммы.")
         n = int(input("Мощность множества (n): "))
@@ -56,7 +56,7 @@ class SumRule(CombinatorialScheme):
 
 class ProductRule(CombinatorialScheme):
     """Реализация правила произведения."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение правила произведения."""
         print("Вы выбрали правило произведения.")
         n = int(input("Мощность множества (n): "))
@@ -67,7 +67,7 @@ class ProductRule(CombinatorialScheme):
 
 class PermWithRep(CombinatorialScheme):
     """Реализация перестановок с повторениями."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение перестановок с повторениями."""
         print("Вы выбрали перестановки с повторениями.")
         n = int(input("Введите количество элементов (n): "))
@@ -78,7 +78,7 @@ class PermWithRep(CombinatorialScheme):
 
 class PermWithoutRep(CombinatorialScheme):
     """Реализация перестановок без повторений."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение перестановок без повторений."""
         print("Вы выбрали перестановки без повторений.")
         n = int(input("Введите количество элементов (n): "))
@@ -88,7 +88,7 @@ class PermWithoutRep(CombinatorialScheme):
 
 class CombWithRep(CombinatorialScheme):
     """Реализация сочетаний с повторениями."""
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение сочетаний с повторениями."""
         print("Вы выбрали сочетания с повторениями.")
         n = int(input("Введите количество элементов (n): "))
@@ -99,7 +99,7 @@ class CombWithRep(CombinatorialScheme):
 class CombWithoutRep(CombinatorialScheme):
     """Реализация сочетаний без повторений."""
 
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение сочетаний без повторений."""
         print("Вы выбрали сочетания без повторений.")
         n = int(input("Введите количество элементов (n): "))
@@ -112,18 +112,20 @@ class CombWithoutRep(CombinatorialScheme):
 class ArrangeWithRep(CombinatorialScheme):
     """Реализация размещений с повторениями."""
 
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение размещений с повторениями."""
         print("Вы выбрали размещения с повторениями.")
-        n = int(input("Введите количество элементов (n): "))
-        k = int(input("Введите длину размещения (k): "))
+        if not test_mode:
+            n = int(input("Введите количество элементов (n): "))
+            k = int(input("Введите длину размещения (k): "))
+        return n ** k
         print("Результат:", n ** k)
 
 
 class ArrangeWithoutRep(CombinatorialScheme):
     """Реализация размещений без повторений."""
 
-    def execute(self):
+    def execute(self, n = 0, k = 0, test_mode = False):
         """Выполнение размещений без повторений."""
         print("Вы выбрали размещения без повторений.")
         n = int(input("Введите количество элементов (n): "))

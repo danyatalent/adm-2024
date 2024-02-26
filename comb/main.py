@@ -12,7 +12,6 @@ def main():
         ArrangeWithRep("Размещения с повторениями"),
         ArrangeWithoutRep("Размещения без повторений")
     ]
-
     print("Выберите комбинаторную схему:")
     for i, scheme in enumerate(schemes, start=1):
         print(f"{i}. {scheme.name}")
