@@ -1,3 +1,5 @@
+# Выполнили: Каневский Даниил, Труфманов Михаил, Махров Матвей
+
 import unittest
 from combination import *
 

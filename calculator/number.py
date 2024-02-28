@@ -1,3 +1,5 @@
+# Выполнили: Каневский Даниил, Труфманов Михаил, Махров Матвей
+
 class Number:
     def __init__(self, number: str, notation: int = 10) -> None:
         self.number = number

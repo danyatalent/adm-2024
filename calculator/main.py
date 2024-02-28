@@ -1,3 +1,5 @@
+# Выполнили: Каневский Даниил, Труфманов Михаил, Махров Матвей
+
 from tkinter import *
 from tkinter import ttk
 from calculator import Calculator
