@@ -5,6 +5,7 @@ from combination import *
 
 class TestComb(unittest.TestCase):
     """Класс тестирования возможностей класса CombinatorialScheme и его наследников"""
+    print(f'n: 5, k: 3')
     def test_sum_rule(self):
         """Тест для правила суммы."""
         sum_rule = SumRule("Test Sum Rule")
