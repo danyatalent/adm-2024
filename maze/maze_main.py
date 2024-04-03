@@ -1,3 +1,4 @@
+#Выполнил Труфманов Михаил
 from maze_class import *
 from maze_generator import *
 rows, cols = 0, 0

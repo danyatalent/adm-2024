@@ -1,5 +1,5 @@
 import random
-
+#Выполнил Труфманов Михаил
 class MazeGenerator:
     """
     Класс MazeGenerator предназначен для генерации лабиринта методом "Recursive Backtracking".
