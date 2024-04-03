@@ -1,24 +1,53 @@
 import random
 
-def generate_maze(size):
-    maze = [[0 for _ in range(size)] for _ in range(size)]
+class MazeGenerator:
+    """
+    Класс MazeGenerator предназначен для генерации лабиринта методом "Recursive Backtracking".
 
-    # Установка начальной и конечной точек
-    maze[0][0] = 0  # Начало
-    maze[size - 1][size - 1] = 2  # Конец
+    Атрибуты:
+        rows (int): Количество строк в лабиринте.
+        cols (int): Количество столбцов в лабиринте.
+        maze (list): Двумерный массив, представляющий лабиринт.
+    """
 
-    # Создание случайных стен в лабиринте
-    for i in range(size):
-        for j in range(size):
-            if random.random() < 0.3:  # Шанс создания стены
-                maze[i][j] = 1  # Стена
+    def __init__(self, rows, cols):
+        """
+        Инициализирует объект MazeGenerator.
 
-    return maze
+        Параметры:
+            rows (int): Количество строк в лабиринте.
+            cols (int): Количество столбцов в лабиринте.
+        """
+        self.rows = rows
+        self.cols = cols
+        self.maze = [['W' for _ in range(cols)] for _ in range(rows)]
 
-# Генерация лабиринта 5x5
-maze_example = generate_maze(5)
+    def generate_maze(self):
+        """
+        Генерирует лабиринт методом "Recursive Backtracking".
 
-# Вывод лабиринта
-print("Пример лабиринта:")
-for row in maze_example:
-    print(row)
+        Возвращает:
+            list: Двумерный массив, представляющий сгенерированный лабиринт.
+        """
+        self.carve_passage(0, 0)
+        self.maze[0][0] = 'S'
+        self.maze[self.rows - 1][self.cols - 1] = 'F'
+        return self.maze
+
+    def carve_passage(self, row, col):
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        random.shuffle(directions)
+
+        for dr, dc in directions:
+            next_row, next_col = row + 2 * dr, col + 2 * dc
+            if 0 <= next_row < self.rows and 0 <= next_col < self.cols and self.maze[next_row][next_col] == 'W':
+                self.maze[row + dr][col + dc] = ' '
+                self.maze[next_row][next_col] = ' '
+                self.carve_passage(next_row, next_col)
+
+        self.maze[self.rows - 2][self.cols - 1] = ' '
+
+
+
+
+# Вывод сгенерированного лабиринта

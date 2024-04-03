@@ -1,23 +1,19 @@
 from maze_class import *
-maze = [
-    [0, 1, 0, 0, 0],
-    [0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0],
-    [1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0]
-]
+from maze_generator import *
+rows, cols = 0, 0
+rows = int(input("Введите значение rows лабиринта: "))
+cols = int(input("Введите значение cols лабиринта: "))
+maze_generator = MazeGenerator(rows, cols)
+maze = maze_generator.generate_maze()
+for row in maze:
+    print(' '.join(row))
 
 solver = MazeSolver(maze)
-path = solver.find_path()
+solution = solver.solve_maze()
 
-if path:
-    print("Путь найден:")
-    for row in range(len(maze)):
-        for col in range(len(maze[0])):
-            if (row, col) in path:
-                print("*", end=" ")
-            else:
-                print(maze[row][col], end=" ")
-        print()
+if solution:
+    print("Path found:")
+    for step in reversed(solution):
+        print(step)
 else:
-    print("Путь не найден.")
+    print("No path found")
