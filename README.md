@@ -176,6 +176,30 @@ python3 comb/main.py
  python3 maze/maze_main.py
 ```
 
+---
+
+
+### [Перестановки с перемещением и без перемещений](permutations/permutations.py)
+
+#### Махров Матвей. Вариант 2
+
+#### Реализовано
+* Консольный интерфейс
+* Перестановки с перемещением
+* Перестановки без перемещений
+
+#### Requirements
+* python3
+
+#### Инструкция
+С клавиаутуры необходимо ввести количество n чисел, после чего генерируются все перестановки чисел от 1 до n. 
+
+![alt text](imgs/image-for-permutations.png)
+
+
+---
+
+
 ### [Сортировка на дереве](tree_sort/tree_sort.py)
 #### Реализовано
 * Коносольный интерфейс
@@ -191,4 +215,3 @@ python3 comb/main.py
  python3 tree_sort/tree_sort.py
 ```
 ![tree_sort](imgs/tree_sort.gif)
-
